@@ -82,4 +82,8 @@ export class AppComponent {
 		}
 		
 	}
+
+	taskImportant(index: number) {
+		this.tareas[index].destacada = !this.tareas[index].destacada
+	}
 }

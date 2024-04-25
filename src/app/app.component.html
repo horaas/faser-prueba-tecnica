@@ -11,15 +11,19 @@
 			<th><button (click)="orderByTask()">Ordenar</button></th>
 			<th><button (click)="orderByTime()">Ordenar</button></th>
 		</tr>
-		<tr *ngFor="let tarea of tareas; let index of i">
-			<th>
+		<tr *ngFor="let tarea of tareas; let index of i, let iData = index"
+		>
+			<th [ngClass]="{prueba: tarea.destacada}">
 				{{tarea.titulo}}
 			</th>
-			<th>
+			<th [ngClass]="{prueba: tarea.destacada}">
 				({{tarea.minutos}} minutos)
 			</th>
 			<th>
 				<input type="checkbox" value="{{i}}" (change)="pruebas($event.currentTarget.checked, index)">
+			</th>
+			<th>
+				<button (click)="taskImportant(iData)">{{tarea.destacada ? 'No destacar' : 'Destacar'}}</button>
 			</th>
 		</tr>
 	</table>
