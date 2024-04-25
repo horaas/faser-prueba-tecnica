@@ -1,6 +1,11 @@
 <div class="container">
 	<h1>Prueba técnica - Estudio Faser</h1>
 	<h2>Listado de tareas</h2>
+	<div class="container-inputs">
+		<input type="text" placeholder="Tarea" #task>
+		<input type="number" placeholder="Tiempo" #time>
+		<button (click)="addTask(task.value, time.value)">Añadir</button>
+	</div>
 	<table>
 		<tr *ngFor="let tarea of tareas">
 			<th>

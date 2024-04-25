@@ -21,4 +21,17 @@ export class AppComponent {
 	async obtenerTareas() {
 		this.tareas = await this.service.obtenerTareas();
 	}
+
+	addTask(task: string, time: number) {
+		if (task.trim() && time ) {
+			this.tareas.push(new Tarea((this.tareas.length + 1), task, time))
+		}
+
+		if (!task.trim() || task.length  < 5) {
+			alert('Debe tener un valor mayor o igual a 5 caracteres la tareas')
+		}
+		if (Number(time) === 0) {
+			alert('Debe tener un valor mayor a cero el tiempo')
+		}
+	}
 }
