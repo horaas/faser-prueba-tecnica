@@ -86,4 +86,9 @@ export class AppComponent {
 	taskImportant(index: number) {
 		this.tareas[index].destacada = !this.tareas[index].destacada
 	}
+
+	handleDisorderTask() {
+		console.error()
+		this.tareas = this.tareas.sort((a:any, b: any) => Math.floor(Math.random() * (b.minutos  + 1)) - a.minutos)
+	}
 }
