@@ -7,12 +7,21 @@
 		<button (click)="addTask(task.value, time.value)">Añadir</button>
 	</div>
 	<table>
+		<tr>
+			<th><button (click)="orderByTask()">Ordenar</button></th>
+			<th><button (click)="orderByTime()">Ordenar</button></th>
+		</tr>
 		<tr *ngFor="let tarea of tareas; let index of i">
 			<th>
-				{{tarea.titulo}} ({{tarea.minutos}} minutos)
-				<input type="checkbox" value="{{i}}" (change) ="pruebas($event.currentTarget.checked, index)">
+				{{tarea.titulo}}
+			</th>
+			<th>
+				({{tarea.minutos}} minutos)
+			</th>
+			<th>
+				<input type="checkbox" value="{{i}}" (change)="pruebas($event.currentTarget.checked, index)">
 			</th>
 		</tr>
 	</table>
-	<button (click) = "handleRemoveTask()">Elminar tareas</button>
+	<button (click)="handleRemoveTask()">Elminar tareas</button>
 </div>

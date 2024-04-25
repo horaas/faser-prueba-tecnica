@@ -10,6 +10,8 @@ import { Tarea } from './tarea';
 export class AppComponent {
 	tareas: Tarea[];
 	tareasRemove: Tarea[] = [];
+	orderByTimeValue: string = 'asc'
+	orderByDescriptionValue: string = 'asc'
 	constructor(
         public service: AppService,
 	) { }
@@ -51,5 +53,33 @@ export class AppComponent {
 
 	handleRemoveTask() {
 		this.tareas = this.tareas.filter((result) => !this.tareasRemove.find((value) => value.id === result.id))
+	}
+
+	orderByTime() {
+		if (this.orderByTimeValue === 'asc') {
+			this.orderByTimeValue = 'des'
+			this.tareas = this.tareas.sort((a:any, b: any) => a.minutos - b.minutos)
+			return 
+		}
+		if (this.orderByTimeValue === 'des') {
+			this.orderByTimeValue = 'asc'
+			this.tareas = this.tareas.sort((a:any, b: any) => b.minutos - a.minutos)
+			return 
+		}
+		
+	}
+
+	orderByTask() {
+		if (this.orderByDescriptionValue === 'asc') {
+			this.orderByDescriptionValue = 'des'
+			this.tareas = this.tareas.sort((a:any, b: any) => a.titulo.localeCompare(b.titulo))
+			return 
+		}
+		if (this.orderByDescriptionValue === 'des') {
+			this.orderByDescriptionValue = 'asc'
+			this.tareas = this.tareas.sort((a:any, b: any) => b.titulo.localeCompare(a.titulo))
+			return 
+		}
+		
 	}
 }
